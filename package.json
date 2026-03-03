@@ -1,0 +1,14 @@
+{
+  "name": "report-gen",
+  "version": "1.0.0",
+  "private": true,
+  "workspaces": [
+    "packages/frontend",
+    "packages/backend"
+  ],
+  "scripts": {
+    "dev": "npm run dev --workspace=packages/backend & npm run dev --workspace=packages/frontend",
+    "build": "npm run build --workspace=packages/frontend",
+    "start": "npm run start --workspace=packages/backend"
+  }
+}
