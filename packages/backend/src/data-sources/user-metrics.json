@@ -1,0 +1,24 @@
+{
+  "id": "user-metrics",
+  "name": "User Metrics",
+  "schema": [
+    { "name": "date", "type": "string" },
+    { "name": "active_users", "type": "number" },
+    { "name": "new_signups", "type": "number" },
+    { "name": "churn_rate", "type": "number" }
+  ],
+  "rows": [
+    { "date": "2024-01-01", "active_users": 1200, "new_signups": 85, "churn_rate": 2.1 },
+    { "date": "2024-02-01", "active_users": 1350, "new_signups": 110, "churn_rate": 1.8 },
+    { "date": "2024-03-01", "active_users": 1500, "new_signups": 130, "churn_rate": 1.5 },
+    { "date": "2024-04-01", "active_users": 1420, "new_signups": 95, "churn_rate": 2.3 },
+    { "date": "2024-05-01", "active_users": 1580, "new_signups": 140, "churn_rate": 1.2 },
+    { "date": "2024-06-01", "active_users": 1650, "new_signups": 125, "churn_rate": 1.6 },
+    { "date": "2024-07-01", "active_users": 1700, "new_signups": 105, "churn_rate": 1.9 },
+    { "date": "2024-08-01", "active_users": 1820, "new_signups": 150, "churn_rate": 1.1 },
+    { "date": "2024-09-01", "active_users": 1900, "new_signups": 135, "churn_rate": 1.4 },
+    { "date": "2024-10-01", "active_users": 2050, "new_signups": 170, "churn_rate": 1.0 },
+    { "date": "2024-11-01", "active_users": 2200, "new_signups": 190, "churn_rate": 0.9 },
+    { "date": "2024-12-01", "active_users": 2350, "new_signups": 200, "churn_rate": 0.8 }
+  ]
+}

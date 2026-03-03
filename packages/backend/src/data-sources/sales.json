@@ -1,0 +1,24 @@
+{
+  "id": "sales",
+  "name": "Sales Data",
+  "schema": [
+    { "name": "month", "type": "string" },
+    { "name": "revenue", "type": "number" },
+    { "name": "units", "type": "number" },
+    { "name": "region", "type": "string" }
+  ],
+  "rows": [
+    { "month": "Jan", "revenue": 42000, "units": 120, "region": "North" },
+    { "month": "Feb", "revenue": 38500, "units": 105, "region": "North" },
+    { "month": "Mar", "revenue": 51000, "units": 140, "region": "North" },
+    { "month": "Apr", "revenue": 47500, "units": 130, "region": "South" },
+    { "month": "May", "revenue": 53000, "units": 155, "region": "South" },
+    { "month": "Jun", "revenue": 49000, "units": 142, "region": "South" },
+    { "month": "Jul", "revenue": 61000, "units": 175, "region": "East" },
+    { "month": "Aug", "revenue": 58500, "units": 168, "region": "East" },
+    { "month": "Sep", "revenue": 55000, "units": 150, "region": "East" },
+    { "month": "Oct", "revenue": 63000, "units": 180, "region": "West" },
+    { "month": "Nov", "revenue": 71000, "units": 210, "region": "West" },
+    { "month": "Dec", "revenue": 78000, "units": 240, "region": "West" }
+  ]
+}
