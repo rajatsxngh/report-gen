@@ -2,6 +2,7 @@ import express from 'express';
 import cors from 'cors';
 import { initDatabase } from './db.js';
 import dataSourcesRouter from './routes/data-sources.js';
+import templateRoutes from './routes/templates.js';
 
 const app = express();
 const PORT = process.env.PORT || 3001;
@@ -17,6 +18,7 @@ app.get('/api/health', (req, res) => {
 });
 
 app.use('/api/data-sources', dataSourcesRouter);
+app.use('/api/templates', templateRoutes);
 
 app.listen(PORT, () => {
   console.log(`ReportGen backend running on http://localhost:${PORT}`);
