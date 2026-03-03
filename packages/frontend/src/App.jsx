@@ -1,6 +1,7 @@
 import { BrowserRouter, Routes, Route, Link, useLocation } from 'react-router-dom';
 import Dashboard from './pages/Dashboard';
 import SchedulerPage from './pages/SchedulerPage.jsx';
+import TemplateBuilder from './pages/TemplateBuilder';
 
 function NavBar() {
   const location = useLocation();
@@ -53,15 +54,6 @@ function NavBar() {
   );
 }
 
-function PlaceholderPage({ title }) {
-  return (
-    <div style={{ padding: '2rem', textAlign: 'center', color: '#6b7280' }}>
-      <h2>{title}</h2>
-      <p>This page is not yet implemented.</p>
-    </div>
-  );
-}
-
 function App() {
   return (
     <BrowserRouter>
@@ -69,9 +61,8 @@ function App() {
       <Routes>
         <Route path="/" element={<Dashboard />} />
         <Route path="/schedules" element={<SchedulerPage />} />
-        <Route path="/templates/new" element={<PlaceholderPage title="New Template" />} />
-        <Route path="/templates/:id" element={<PlaceholderPage title="Edit Template" />} />
-        <Route path="/templates/:id/schedule" element={<PlaceholderPage title="Schedule Configuration" />} />
+        <Route path="/templates/new" element={<TemplateBuilder />} />
+        <Route path="/templates/:id" element={<TemplateBuilder />} />
       </Routes>
     </BrowserRouter>
   );
