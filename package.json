@@ -7,8 +7,11 @@
     "packages/backend"
   ],
   "scripts": {
-    "dev": "npm run dev --workspace=packages/backend & npm run dev --workspace=packages/frontend",
+    "dev": "concurrently -n backend,frontend -c blue,green \"npm run dev --workspace=packages/backend\" \"npm run dev --workspace=packages/frontend\"",
     "build": "npm run build --workspace=packages/frontend",
     "start": "npm run start --workspace=packages/backend"
+  },
+  "devDependencies": {
+    "concurrently": "^9.1.0"
   }
 }

@@ -2,6 +2,7 @@ import { BrowserRouter, Routes, Route, Link, useLocation } from 'react-router-do
 import Dashboard from './pages/Dashboard';
 import SchedulerPage from './pages/SchedulerPage.jsx';
 import TemplateBuilder from './pages/TemplateBuilder';
+import TemplateSchedulePage from './pages/TemplateSchedulePage.jsx';
 
 function NavBar() {
   const location = useLocation();
@@ -63,6 +64,7 @@ function App() {
         <Route path="/schedules" element={<SchedulerPage />} />
         <Route path="/templates/new" element={<TemplateBuilder />} />
         <Route path="/templates/:id" element={<TemplateBuilder />} />
+        <Route path="/templates/:id/schedule" element={<TemplateSchedulePage />} />
       </Routes>
     </BrowserRouter>
   );
