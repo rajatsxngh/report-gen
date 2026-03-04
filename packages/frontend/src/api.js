@@ -13,6 +13,42 @@ async function request(path, options = {}) {
   return data;
 }
 
+// Data Sources API
+export function fetchDataSources() {
+  return request('/data-sources');
+}
+
+export function fetchDataSource(id) {
+  return request(`/data-sources/${encodeURIComponent(id)}`);
+}
+
+// Templates API
+export function fetchTemplates() {
+  return request('/templates');
+}
+
+export function fetchTemplate(id) {
+  return request(`/templates/${encodeURIComponent(id)}`);
+}
+
+export function createTemplate(name) {
+  return request('/templates', {
+    method: 'POST',
+    body: JSON.stringify({ name, elements: [] }),
+  });
+}
+
+export function saveTemplate(id, { name, elements }) {
+  return request(`/templates/${encodeURIComponent(id)}`, {
+    method: 'PUT',
+    body: JSON.stringify({ name, elements }),
+  });
+}
+
+export function deleteTemplate(id) {
+  return request(`/templates/${encodeURIComponent(id)}`, { method: 'DELETE' });
+}
+
 // Schedules API
 export function fetchSchedules() {
   return request('/schedules');
@@ -38,9 +74,4 @@ export function deleteSchedule(id) {
 
 export function fetchRunHistory(scheduleId) {
   return request(`/schedules/${scheduleId}/history`);
-}
-
-// Templates API (for schedule form dropdown)
-export function fetchTemplates() {
-  return request('/templates');
 }
