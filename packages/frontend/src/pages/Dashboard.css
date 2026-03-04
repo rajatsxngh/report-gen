@@ -154,6 +154,15 @@
   color: #374151;
 }
 
+.btn-action.schedule {
+  color: #7c3aed;
+  border-color: #c4b5fd;
+}
+
+.btn-action.schedule:hover {
+  background: #f5f3ff;
+}
+
 .btn-action.delete {
   color: #dc2626;
   border-color: #fca5a5;

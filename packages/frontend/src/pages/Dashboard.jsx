@@ -1,6 +1,12 @@
 import { useState, useEffect, useCallback } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
+import {
+  fetchTemplates as apiFetchTemplates,
+  deleteTemplate as apiDeleteTemplate,
+} from '../api.js';
 import './Dashboard.css';
+
+const API_BASE = import.meta.env.VITE_API_BASE_URL || '/api';
 
 function formatSchedule(schedule) {
   if (!schedule) return null;
@@ -34,11 +40,9 @@ export default function Dashboard() {
   const [runningIds, setRunningIds] = useState(new Set());
   const navigate = useNavigate();
 
-  const fetchTemplates = useCallback(async () => {
+  const loadTemplates = useCallback(async () => {
     try {
-      const res = await fetch('/api/templates');
-      if (!res.ok) throw new Error('Failed to fetch templates');
-      const data = await res.json();
+      const data = await apiFetchTemplates();
       setTemplates(data);
       setError(null);
     } catch (err) {
@@ -49,15 +53,15 @@ export default function Dashboard() {
   }, []);
 
   useEffect(() => {
-    fetchTemplates();
-  }, [fetchTemplates]);
+    loadTemplates();
+  }, [loadTemplates]);
 
   const handleRunNow = async (templateId) => {
     setRunningIds(prev => new Set(prev).add(templateId));
     try {
-      const res = await fetch(`/api/reports/${templateId}/run`, { method: 'POST' });
+      const res = await fetch(`${API_BASE}/reports/${templateId}/run`, { method: 'POST' });
       if (!res.ok) throw new Error('Run failed');
-      await fetchTemplates();
+      await loadTemplates();
     } catch (err) {
       console.error('Run failed:', err);
     } finally {
@@ -72,10 +76,9 @@ export default function Dashboard() {
   const handleDelete = async () => {
     if (!deleteTarget) return;
     try {
-      const res = await fetch(`/api/templates/${deleteTarget.id}`, { method: 'DELETE' });
-      if (!res.ok) throw new Error('Delete failed');
+      await apiDeleteTemplate(deleteTarget.id);
       setDeleteTarget(null);
-      await fetchTemplates();
+      await loadTemplates();
     } catch (err) {
       console.error('Delete failed:', err);
     }
@@ -148,6 +151,12 @@ export default function Dashboard() {
                     onClick={() => navigate(`/templates/${t.id}`)}
                   >
                     Edit
+                  </button>
+                  <button
+                    className="btn-action schedule"
+                    onClick={() => navigate(`/templates/${t.id}/schedule`)}
+                  >
+                    Schedule
                   </button>
                   <button
                     className="btn-action delete"
