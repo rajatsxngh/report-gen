@@ -1,5 +1,6 @@
 import { BrowserRouter, Routes, Route, Link, useLocation } from 'react-router-dom';
 import Dashboard from './pages/Dashboard';
+import SchedulerPage from './pages/SchedulerPage.jsx';
 
 function NavBar() {
   const location = useLocation();
@@ -31,6 +32,14 @@ function NavBar() {
         }}>
           Dashboard
         </Link>
+        <Link to="/schedules" style={{
+          fontSize: '0.875rem',
+          fontWeight: 500,
+          color: isActive('/schedules') ? '#2563eb' : '#6b7280',
+          textDecoration: 'none',
+        }}>
+          Schedules
+        </Link>
         <Link to="/templates/new" style={{
           fontSize: '0.875rem',
           fontWeight: 500,
@@ -59,6 +68,7 @@ function App() {
       <NavBar />
       <Routes>
         <Route path="/" element={<Dashboard />} />
+        <Route path="/schedules" element={<SchedulerPage />} />
         <Route path="/templates/new" element={<PlaceholderPage title="New Template" />} />
         <Route path="/templates/:id" element={<PlaceholderPage title="Edit Template" />} />
         <Route path="/templates/:id/schedule" element={<PlaceholderPage title="Schedule Configuration" />} />
